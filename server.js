@@ -5,24 +5,27 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Middlewares
-app.use(cors());
+// ✅ CORS setup (optional: specify allowed frontend domains)
+app.use(cors({
+    origin: ['http://localhost:3000', 'https://your-site.netlify.app'],
+    credentials: true,
+}));
+
 app.use(express.json());
 
-// Routes
+// ✅ Routes
 const authRoutes = require('./routes/authRoutes');
-app.use('/api/auth', authRoutes);
-
 const purchasesRoutes = require('./routes/purchases');
+
+app.use('/api/auth', authRoutes);
 app.use('/api/purchases', purchasesRoutes);
 
-
-// Test route
+// ✅ Root route (cleaned)
 app.get('/', (req, res) => {
-    res.send('Military Asset Management Backend Running');
+    res.send('✅ Military Asset Management Backend Running');
 });
 
-// Start server
+// ✅ Start server using Render-compatible port
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    console.log(`✅ Server running on port ${port}`);
 });
