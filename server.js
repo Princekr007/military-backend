@@ -7,7 +7,7 @@ const port = process.env.PORT || 5000;
 
 // ✅ CORS setup (optional: specify allowed frontend domains)
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://your-site.netlify.app'],
+    origin: ['http://localhost:3000', 'https://dapper-druid-c15f72.netlify.app/'],
     credentials: true,
 }));
 
